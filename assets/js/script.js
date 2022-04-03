@@ -119,21 +119,21 @@ function isYesNo(x){
 }
 
 function createPassword(len, options){
-    chars = Array(Number(len));
+    passwordChars = Array(Number(len));
     for(opt of options){
-        let idx = getNextAvailableIndex(chars);
-        chars[idx] = getRandomCharacter(alphabet, [opt])
+        let idx = getNextAvailableIndex(passwordChars);
+        passwordChars[idx] = getRandomCharacter(alphabet, [opt])
     }
-    let newAlphabet = "";
     
+    let combinedAlphabet = "";
     for(opt of options)
-        newAlphabet += alphabet[opt];
+        combinedAlphabet += alphabet[opt];
 
     for(let i = 0; i < len; ++i){
-        if(chars[i] === undefined)
-        chars[i] = getRandomCharacter(newAlphabet);
+        if(passwordChars[i] === undefined)
+        passwordChars[i] = getRandomCharacter(combinedAlphabet);
     }
-    return chars.join('');
+    return passwordChars.join('');
 }
 
 function getRandomInt(max){
