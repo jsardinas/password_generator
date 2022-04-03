@@ -7,7 +7,6 @@ function writePassword() {
     var passwordText = document.querySelector("#password");
 
     passwordText.value = password;
-
 }
 
 // Add event listener to generate button
@@ -68,12 +67,10 @@ function generatePassword(){
 
 function promptOption(promptText, condition){
     var result;
-    while(result === undefined || !condition(result)){
+    do {
         result = window.prompt(promptText);
-        if(result === null)
-        return null;
-  }
-  return result;
+    } while(result !== null && !condition(result));
+    return result;
 }
 
 function getPasswordLength(){
@@ -118,7 +115,7 @@ function getYesNoOption(option){
 }
 
 function isYesNo(x){
-    return x!== undefined && x !== null && yesNoAnswers.includes(x.toUpperCase());
+    return x !== undefined && x !== null && yesNoAnswers.includes(x.toUpperCase());
 }
 
 function createPassword(len, options){
