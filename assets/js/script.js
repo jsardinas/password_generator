@@ -27,10 +27,8 @@ var alphabet = {
     'special':specialCharacters
 }
 
-
 function generatePassword(){
     var len = getPasswordLength();
-    console.log(len);
     if (len === null)
         return "";
 
@@ -38,25 +36,21 @@ function generatePassword(){
     if(hasLower === null)
         return "";
     hasLower = yesNoAnswers.indexOf(hasLower.toUpperCase()) < 2;
-    console.log(hasLower);
 
     var hasUpper = getUpperCaseOption();
     if(hasUpper === null)
         return "";
     hasUpper = yesNoAnswers.indexOf(hasUpper.toUpperCase()) < 2;
-    console.log(hasUpper);
 
     var hasNumbers = getNumberOption();
     if(hasNumbers === null)
         return "";
     hasNumbers = yesNoAnswers.indexOf(hasNumbers.toUpperCase()) < 2;
-    console.log(hasNumbers);
 
     var hasSpecial = getSpecialCharactersOption();
     if(hasSpecial === null)
         return "";
     hasSpecial = yesNoAnswers.indexOf(hasSpecial.toUpperCase()) < 2;
-    console.log(hasSpecial);
 
     if(!hasLower && !hasUpper && !hasNumbers && !hasSpecial){
         alert('You will need at least one type of character');
@@ -68,7 +62,6 @@ function generatePassword(){
     if(hasUpper===true)options.push('upper');
     if(hasNumbers===true)options.push('numbers');
     if(hasSpecial===true)options.push('special');
-    console.log(options);
 
     return createPassword(len, options);
 }
@@ -129,7 +122,6 @@ function isYesNo(x){
 }
 
 function createPassword(len, options){
-
     chars = Array(Number(len));
     for(opt of options){
         let idx = getNextAvailableIndex(chars);
@@ -138,7 +130,7 @@ function createPassword(len, options){
     let newAlphabet = "";
     
     for(opt of options)
-        newAlphabet+=alphabet[opt];
+        newAlphabet += alphabet[opt];
 
     for(let i = 0; i < len; ++i){
         if(chars[i] === undefined)
